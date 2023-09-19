@@ -4,30 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="./index.css" /> -->
     <style>
-      #unique {
-        color: blue;
-        background-color: yellow;
-        font-size: 50px;
+      div.class-1 {
+        background-color: black;
+        color: #fff;
       }
-      .class-1 {
+      div.class-1 > h1 {
+        color: orange;
+      }
+      div.class-1 p {
         color: red;
+      }
+
+      div.class-1 > ul > li {
+        color: green;
       }
     </style>
   </head>
   <body>
-    <div>
-      !important > inline Styles > Id selector > class selector > element
-      selector
+    <!-- div - same background, h1 - orange text color, p - red text color -->
+    <div class="class-1">
+      la;jd;fa
+      <h1>this is heading</h1>
+      <h1>this is heading</h1>
+      <p>this is paragraph</p>
+      <ul>
+        <h1>sdfla h1 tag inside ul</h1>
+        <li>sdfsdfs</li>
+      </ul>
     </div>
 
-    <h1 class="class-1">Page HEAding</h1>
-    <h1 class="class-1">Page HEAding</h1>
-    <h1 id="unique" class="class-1">Page HEAding</h1>
-    <h1 class="class-1">Page HEAding</h1>
-    <h1 class="class-1">Page HEAding</h1>
-    <h1 class="class-1">Page HEAding</h1>
-    <h1 class="class-1">Page HEAding</h1>
+    <div>asdjfka;l</div>
+
+    <!-- parent child siblings ancestors direct-descendents -->
+    <!-- <div class="parent">
+      aldfjal;sjdf;
+      <h1>alsjdf;</h1>
+      <p>asldkfj</p>
+      <div>
+        <h3>dfalhsf</h3>
+      </div>
+    </div> -->
   </body>
 </html>
