@@ -5,50 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      /* h1,
-      div.div-1,
-      h2,
-      h3 {
-        font-style: italic;
+      .hoverOverMe:hover {
+        cursor: pointer;
       }
-      h1 {
+      button:active {
+        background-color: yellow;
+      }
+      input:focus {
+        outline-color: red;
+      }
+      input:disabled {
+        background-color: blue;
+      }
+      input:enabled {
+        background-color: aqua;
+      }
+      ul li:first-child {
+        font-weight: 800;
+      }
+
+      ul li:last-child {
+        background-color: yellow;
+      }
+
+      ul li:nth-child(3) {
+        font-size: 40px;
+      }
+
+      p:not(.special) {
         color: red;
       }
 
-      h2,
-      div.div-1 {
-        color: blue;
+      h1::before {
+        content: "Before content";
+        color: red;
       }
 
-      h3#uniqueh3 {
-        color: green;
-      } */
-
-      /* h2 ~ p {
-        font-style: italic;
-        background-color: black;
-        color: #fff;
-      } */
-
-      input[type="text"] {
-        background-color: aqua;
-        width: 300px;
+      h1::after {
+        content: "After heading";
+        color: blue;
       }
     </style>
   </head>
   <body>
+    <h1>This is heading</h1>
+
+    <p>This is paragraph</p>
+    <p class="special">This is paragraph special</p>
+    <p>This is paragraph</p>
+
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+      <li>Item 4</li>
+      <li>Item 5</li>
+    </ul>
+    <input type="text" disabled />
     <input type="text" />
-    <input type="file" />
-    <input type="color" />
-    <!-- <div class="div-1">asfdk;s</div>
-    <p class="div-1">sfdsds</p>
-    <h1>This is h1</h1>
-    <h2>This is h2</h2>
-    <p>asdkfas P tag</p>
-    <p>Another</p>
-    <h3 id="uniqueh3">This is h3</h3>
-    <h3>This is h3</h3>
-    <h3>This is h3</h3>
-    <p>sdfdsdfs third p tag</p> -->
+    <button class="hoverOverMe">Google</button>
   </body>
 </html>
