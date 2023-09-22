@@ -10,29 +10,32 @@
         padding: 0px;
         box-sizing: border-box;
       }
+      html {
+        font-size: 15px;
+      }
       .parent {
         background-color: aquamarine;
-        width: 60vw;
-        height: 60%;
-        margin-bottom: 20px;
-        padding: 20px;
-        /* height: 100px; */
-        /* font-size: 20pt; */
-        /* font-size: 1in; */
-        /* height: 7cm; */
-        /* height: 20mm; */
+        width: 200px;
+        height: 200px;
+        font-size: 1.5rem;
       }
       .child {
         background-color: blueviolet;
-        height: 30%;
-        width: 50%;
+        font-size: 3rem;
+      }
+      .inner-child {
+        background-color: blueviolet;
+        font-size: 1.5rem;
       }
     </style>
   </head>
   <body>
     <div class="parent">
       Parent
-      <div class="child">Child</div>
+      <div class="child">
+        child
+        <div class="inner-child">inner-child</div>
+      </div>
     </div>
     <!-- <div class="parent">Parent</div>
     <div class="parent">Parent</div>
