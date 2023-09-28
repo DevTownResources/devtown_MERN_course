@@ -30,7 +30,7 @@ body {
 .container {
   /* height: 90vh; */
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 1.5rem;
 
   /* align-items: stretch; */
@@ -72,4 +72,44 @@ body {
   /* grid-row-start: 2;
   grid-row-end: 5; */
   grid-row: 2/5;
+}
+
+/* This is for layout */
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "menu main right"
+    "menu footer footer";
+  gap: 10px;
+  background-color: #36aff6;
+  padding: 18px;
+}
+
+.grid-container > div {
+  background-color: #a9daf6;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 1.3rem;
+}
+
+.header {
+  grid-area: header;
+}
+
+.menu {
+  grid-area: menu;
+}
+
+.main {
+  grid-area: main;
+}
+
+.right {
+  grid-area: right;
+}
+
+.footer {
+  grid-area: footer;
 }
