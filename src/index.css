@@ -35,3 +35,27 @@ h2 {
   border-radius: 0.5rem;
   box-shadow: 2.5rem 3.75rem 3rem -3rem #48556a;
 }
+
+.bg-primary-400 {
+  background-color: #7541c8;
+}
+
+.bg-secondary-400 {
+  background-color: #48556a;
+}
+
+.bg-secondary-500 {
+  background-color: #19212e;
+}
+
+.bg-neutral-100 {
+  background-color: #ffff;
+}
+
+.text-neutral-100 {
+  color: #ffff;
+}
+
+.text-secondary-400 {
+  color: #48556a;
+}
