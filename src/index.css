@@ -26,7 +26,9 @@ h2 {
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   width: min(95%, 70rem);
-  margin: 0 auto;
+  margin: 40px auto;
+  /* position: relative;
+  top: 40px; */
 }
 
 .testimonial {
@@ -91,4 +93,25 @@ article > div:first-child {
   width: 1.75rem;
   height: 1.75rem;
   border-radius: 50%;
+}
+
+.testimonial .name {
+  font-size: 0.81rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.testimonial .position {
+  font-size: 0.68rem;
+  opacity: 0.7;
+}
+
+.testimonial > p:first-of-type {
+  font-size: 1.25rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.testimonial > p:last-of-type {
+  opacity: 0.7;
 }
