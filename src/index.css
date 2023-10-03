@@ -78,3 +78,17 @@ h2 {
   background-repeat: no-repeat;
   background-position: top right 10%;
 }
+
+article > div:first-child {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.testimonial img {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+}
