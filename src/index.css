@@ -6,27 +6,58 @@ body {
 }
 
 .element {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  /* border: 20px solid seagreen; */
+  border-top: 20px solid orange;
+  animation: spinner 2s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* .element {
   width: 150px;
   height: 150px;
-  position: relative;
+  position: absolute;
   background-color: orange;
-  /* animation-name: play;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-fill-mode: forwards;
-  animation-direction: alternate;
-  animation-timing-function: ease-in-out;
-  animation-delay: 0.5s; */
-  animation: play 3s ease-in-out 0.5s infinite alternate forwards;
+  animation: play 5s ease-in-out 0.5s infinite alternate forwards;
 }
 
 @keyframes play {
   0% {
     transform: scale(1);
+    top: 0;
+    left: 0;
   }
+
+  25% {
+    top: 0;
+    left: 70vw;
+  }
+
+  50% {
+    top: 70vh;
+    left: 70vw;
+  }
+
+  75% {
+    top: 70vh;
+    left: 0;
+  }
+
   100% {
-    transform: scale(1.4) translate(100px, 100px);
+    transform: scale(1.4);
     border-radius: 50%;
     background-color: aqua;
+    top: 0;
+    left: 0;
   }
-}
+} */
