@@ -8,17 +8,25 @@ body {
 .element {
   width: 150px;
   height: 150px;
+  position: relative;
   background-color: orange;
-  /* transition-duration: 0.8s;
-  transition-property: background-color height;
-  transition-timing-function: cubic-bezier(0, 2.01, 0.84, 0.17);
-  transition-delay: 2s; */
-  transition: all 1s ease-in-out 0.3s;
+  /* animation-name: play;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0.5s; */
+  animation: play 3s ease-in-out 0.5s infinite alternate forwards;
 }
 
-.element:hover {
-  /* width: 400px;
-  height: 400px; */
-  transform: scale(2) rotate(50deg) translate(100px, 100px);
-  background-color: aqua;
+@keyframes play {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.4) translate(100px, 100px);
+    border-radius: 50%;
+    background-color: aqua;
+  }
 }
