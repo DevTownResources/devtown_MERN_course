@@ -19,6 +19,6 @@ body {
 .element:hover {
   /* width: 400px;
   height: 400px; */
-  transform: scale(1.5, 1.5);
+  transform: scale(2) rotate(50deg) translate(100px, 100px);
   background-color: aqua;
 }
