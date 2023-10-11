@@ -12,37 +12,28 @@
     />
   </head>
   <body>
-    <!-- Margin and padding -->
-    <div class="bg-primary m-1 p-1">small margin and padding</div>
-    <div class="bg-warning m-3 p-4">mid margin and padding</div>
-    <div class="bg-danger m-5 p-5">large margin and padding</div>
-
-    <div class="bg-success mx-3 py-3">
-      x direction margin and y direction padding
-    </div>
-
-    <div class="bg-info mt-2 pb-4 mb-2 pt-1 ms-3 ps-5 me-1 pe-2">
-      Lorem, ipsum.
-    </div>
-
-    <!-- Borders -->
-
-    <div class="m-3 p-3 border">default border</div>
-    <!-- <div class="m-3 p-3 border-top border-bottom">top and bottom border</div> -->
-    <div class="m-3 p-3 border-start border-5 border-primary">
-      left and right border
-    </div>
-
-    <div class="m-3 p-3 border border-5 border-danger rounded">
-      rounded corners
-    </div>
-
-    <div class="m-3 p-3 border border-5 border-danger rounded-pill">
-      rounded corners
-    </div>
-
     <!-- Box shadow -->
+    <div class="m-3 p-3 shadow">Lorem ipsum dolor sit amet.</div>
+    <div class="m-3 p-3 shadow-sm">Lorem ipsum dolor sit amet.</div>
+    <div class="m-3 p-3 shadow-lg">Lorem ipsum dolor sit amet.</div>
+
     <!-- Font weight -->
+    <p class="fw-bold">Bold Text</p>
+    <p>Normal Text</p>
+    <p class="fw-bolder">Bolder text</p>
+    <p class="fw-light">Light text</p>
+
+    <!-- Width & height -->
+    <div style="width: 500px">
+      <div class="bg-info w-25">width of 25</div>
+    </div>
+    <div class="bg-warning w-25">width of 25 - parent body</div>
+    <div class="bg-info" style="height: 60vh">
+      <div class="bg-danger h-75">
+        child div with height of 50% of parent div
+      </div>
+    </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
