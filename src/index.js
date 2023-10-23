@@ -1,48 +1,80 @@
-const x = 5;
-const y = 10;
+// Falsy Values:
+// - false
+// - 0
+// - "" or '' (Empty string)
+// - null
+// - undefined
+// - NaN
 
-// if (x === y) {
-//   console.log("x is equal to y");
-// } else if (x > y) {
-//   console.log("x is greater than y");
-// } else {
-//   console.log("x is less than y");
-// }
+// Truthy Values:
+// - Everything else that is not falsy
+// - true
+// - '0' (0 in a string)
+// - ' ' (space in a string)
+// - 'false' (false in a string)
+// - [] (empty array)
+// - {} (empty object)
+// - function () {} (empty function)
 
-// Nested if
-const score = 60;
+const x = function () {};
 
-if (score <= 50) {
-  console.log("You need to practice more");
-  if (score < 30) {
-    console.log("Failed");
-  } else {
-    console.log("Just Passed");
-  }
-} else if (score > 50 && score < 75) {
-  console.log("Keep pushing");
+if (x) {
+  console.log("Truthy value");
+} else {
+  console.log("Falsy value");
 }
 
-const color = "yellow";
+console.log(Boolean(x));
 
-// if (color === "red" || color === "blue" || color === "green") {
-//   console.log("Color is red or blue");
-// }
+const blogPosts = ["one", "tow"];
 
-// Switch case statement (===)
-
-switch (color) {
-  case "red":
-    console.log("Color is red");
-    break;
-  case "blue":
-    console.log("Color is blue");
-    break;
-  case "green":
-    console.log("Color is green");
-    break;
-  default:
-    console.log("COlor not supported");
+if (blogPosts) {
+  console.log("List Post");
+} else {
+  console.log("No Posts to List");
 }
 
-// console.log("This is a test");
+// Solution
+
+if (blogPosts.length > 0) {
+  console.log("List Post");
+} else {
+  console.log("No Posts to List");
+}
+
+const user = {};
+
+if (user) {
+  console.log("User Profile");
+} else {
+  console.log("No User Profile");
+}
+
+// solution
+
+if (Object.keys(user).length > 0) {
+  console.log("User Profile");
+} else {
+  console.log("No User Profile");
+}
+
+console.log(10 < 20 && 30 > 15);
+
+console.log(10 < 20 || 30 < 15);
+
+let a;
+
+// Give us first falsy value or last value
+a = 10 && 20;
+a = 10 && 0 && 20 && 70;
+a = 10 && 20 && 70 && false;
+
+// blogPosts.length > 0 && console.log(blogPosts[0]);
+
+//  || - will give us first truthy value or last value
+
+a = 10 || 20;
+a = 0 || 20;
+a = 0 || "" || undefined || null;
+
+console.log(a);
