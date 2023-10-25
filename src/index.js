@@ -26,55 +26,40 @@ if (x) {
 
 console.log(Boolean(x));
 
-const blogPosts = ["one", "tow"];
+const blogPosts = ["blog post 1", "Blog post 2", "Blog post 3"];
 
 if (blogPosts) {
-  console.log("List Post");
+  console.log("List posts");
 } else {
-  console.log("No Posts to List");
-}
-
-// Solution
-
-if (blogPosts.length > 0) {
-  console.log("List Post");
-} else {
-  console.log("No Posts to List");
-}
-
-const user = {};
-
-if (user) {
-  console.log("User Profile");
-} else {
-  console.log("No User Profile");
+  console.log("No posts");
 }
 
 // solution
 
-if (Object.keys(user).length > 0) {
-  console.log("User Profile");
+if (blogPosts.length > 0) {
+  console.log("List posts");
 } else {
-  console.log("No User Profile");
+  console.log("NO posts");
 }
 
-console.log(10 < 20 && 30 > 15);
+// &&, ||
 
-console.log(10 < 20 || 30 < 15);
+console.log(10 > 20 && 10 > 5);
+console.log(10 > 20 || 10 > 5);
 
 let a;
 
 // Give us first falsy value or last value
-a = 10 && 20;
-a = 10 && 0 && 20 && 70;
-a = 10 && 20 && 70 && false;
+a = 10 && 20 && 70 && "";
+a = 10 && 0 && 20;
+a = 10 && 20 && false && 70;
 
-// blogPosts.length > 0 && console.log(blogPosts[0]);
+blogPosts.length > 0 && console.log(blogPosts[0]);
 
-//  || - will give us first truthy value or last value
+// || - give us first truthy value or last value
 
-a = 10 || 20;
-a = 0 || 20;
-a = 0 || "" || undefined || null;
+a = 10 || 20 || 30;
+a = 0 || 20 || 30;
+a = 0 || "" || undefined || 30 || null;
 
 console.log(a);
