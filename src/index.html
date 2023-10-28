@@ -7,28 +7,69 @@
     <style></style>
   </head>
   <body>
-    <header>
-      <nav>
-        <a href="#">Coffee<span>.</span></a>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Products</a></li>
-          <li><a href="#">Testimonials</a></li>
-          <li><a href="#">About us</a></li>
-          <li><a href="#">Contact us</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <section>
+    <form action="/submit" method="get">
       <div>
-        <h2>Start your Day with Fresh Coffee</h2>
-        <p>
-          Coffee is a popular and beloved beverage enjoyed by people around the
-          world.Awaken your senses with a steaming cup of liquid motivation.
-        </p>
-        <button>Order Now</button>
+        <label for="firstName">First Name</label>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          required
+          value="priya"
+        />
       </div>
-    </section>
+      <br />
+      <div>
+        <label for="lastName">Last Name</label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          placeholder="Enter your last name"
+        />
+      </div>
+      <br>
+      <div>
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+        />
+      <br />
+      <br />
+      <div>
+        <label>What are your hobbies?</label>
+        <br />
+        <input type="checkbox" name="singing" id="singing" />
+        <label for="singing">Singing</label>
+        <input type="checkbox" name="dancing" id="dancing" />
+        <label for="dancing">Dancing</label>
+        <input type="checkbox" name="reading" id="reading" />
+        <label for="reading">Reading</label>
+      </div>
+      <br />
+      <label for="cartype">Car type you own?</label>
+      <br />
+      <br />
+      <select name="cartype" id="cartype">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="fiat">Fiat</option>
+        <option value="audi">Audi</option>
+      </select>
+      <br />
+      <br />
+      <label>What is your gender</label>
+      <br />
+      <input type="radio" name="gender" id="male" value="male" />
+      <label for="male">Male</label>
+      <input type="radio" name="gender" id="female" value="female" />
+      <label for="female">Female</label>
+      <br />
+      <br />
+      <button type="submit">Submit</button>
+    </form>
   </body>
 </html>
