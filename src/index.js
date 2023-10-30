@@ -1,29 +1,25 @@
-// Replace
+// function onClear() {
+//   console.log("onClear func");
+// }
 
-function replace(index) {
-  const li = document.querySelectorAll("li")[index - 1];
-  //   const element = document.createElement("li");
-  //   element.innerText = "Replaced li";
+const clearBtn = document.querySelector("#clear");
 
-  //   li.replaceWith(element);
-  //   console.log(li.innerHTML);
-  //   console.log(li.outerHTML);
-  li.outerHTML = "<li>Replaced with outer html</li>";
+// clearBtn.onclick = function () {
+//   console.log("onclick");
+// };
+// clearBtn.onclick = function () {
+//   console.log("onclick 2");
+// };
+
+function onClear() {
+  const itemList = document.querySelector("ul");
+  const items = itemList.querySelectorAll("li");
+  //   itemList.innerHTML = "";
+
+  items.forEach((item) => item.remove());
 }
 
-// replace(2);
+// clearBtn.addEventListener("click", () => console.log("addEventListener"));
+clearBtn.addEventListener("click", onClear);
 
-// Removing Elements
-
-function removeClearButton() {
-  document.querySelector("#clear").remove();
-}
-
-removeClearButton();
-
-function removeItem(itemNum) {
-  const ele = document.querySelectorAll("li")[itemNum - 1];
-  ele.remove();
-}
-
-removeItem(2);
+// setTimeout(() => clearBtn.removeEventListener("click", onClear), 4000);
