@@ -1,49 +1,29 @@
-// const div = document.createElement("div");
+// Replace
 
-// div.className = "my-element";
-// div.id = "my-element";
-// div.setAttribute("title", "MY Element");
+function replace(index) {
+  const li = document.querySelectorAll("li")[index - 1];
+  //   const element = document.createElement("li");
+  //   element.innerText = "Replaced li";
 
-// // div.innerText = "Hello World";
-
-// const text = document.createTextNode("Hello World from create text node");
-
-// div.appendChild(text);
-
-// // document.body.appendChild(div);
-// document.querySelector("ul").appendChild(div);
-
-// Quick and Dirty
-
-function createItem(item) {
-  const li = document.createElement("li");
-  li.innerHTML = `${item} 
-    <button class="remove-item btn-link text-red">
-    <i class="fa-solid fa-xmark"></i>
-  </button>`;
-  document.querySelector(".items").appendChild(li);
+  //   li.replaceWith(element);
+  //   console.log(li.innerHTML);
+  //   console.log(li.outerHTML);
+  li.outerHTML = "<li>Replaced with outer html</li>";
 }
 
-createItem("Cheese");
-createItem("Butter");
-createItem("Noodles");
+// replace(2);
 
-// Clean and performant
+// Removing Elements
 
-function createItem2(item) {
-  const li = document.createElement("li");
-  li.appendChild(document.createTextNode(item));
-
-  const button = document.createElement("button");
-  button.className = "remove-item btn-link text-red";
-
-  const icon = document.createElement("i");
-  icon.setAttribute("class", "fa-solid fa-xmark");
-
-  button.appendChild(icon);
-  li.appendChild(button);
-
-  document.querySelector(".items").appendChild(li);
+function removeClearButton() {
+  document.querySelector("#clear").remove();
 }
 
-createItem2("Grapes");
+removeClearButton();
+
+function removeItem(itemNum) {
+  const ele = document.querySelectorAll("li")[itemNum - 1];
+  ele.remove();
+}
+
+removeItem(2);
