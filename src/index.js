@@ -1,46 +1,37 @@
 const itemInput = document.querySelector("#item-input");
+const priorityInput = document.querySelector("#priority-input");
+const checkboxInput = document.querySelector("#checkbox");
+const form = document.querySelector("#item-form");
 
-const onKeyPress = (e) => {
-  console.log("key press");
+const onInput = (e) => {
+  console.log(e.target.value);
+  //   console.log(itemInput.value);
 };
 
-const onKeyUp = (e) => {
-  console.log("key up");
+const onCheckbox = (e) => {
+  console.log(e.target.checked);
 };
 
-const onKeyDown = (e) => {
-  //   console.log("key down");
+const onSubmit = (e) => {
+  e.preventDefault();
+  //   console.log("submit");
+  //   console.log(itemInput.value);
+  //   console.log(priorityInput.value);
+  //   console.log(checkboxInput.checked);
+  const formData = new FormData(form);
 
-  // Key
-  if (e.key === "Enter") {
-    alert("You press Enter");
+  const itemName = formData.get("item");
+  if (itemName === "") {
+    alert("Please enter an item");
+    return;
   }
 
-  // KeyCode
-  // https://www.toptal.com/developers/keycode/table
-  if (e.keyCode === 13) {
-    alert("You press Enter");
-  }
-
-  // Code
-  //   console.log(e.code);
-  if (e.code === "Digit1") {
-    console.log("You press 1");
-  }
-
-  // repeat
-  if (e.repeat) {
-    console.log("You press and hold " + e.key);
-  }
-
-  console.log("Shift " + e.shiftKey);
-  console.log("Ctrl " + e.ctrlKey);
-
-  if (e.shiftKey && e.key === "K") {
-    console.log("You press shift + k");
-  }
+  console.log(itemName);
+  console.log(formData.get("priority"));
+  console.log(formData.get("check"));
 };
 
-// itemInput.addEventListener("keypress", onKeyPress);
-// itemInput.addEventListener("keyup", onKeyUp);
-itemInput.addEventListener("keydown", onKeyDown);
+// itemInput.addEventListener("input", onInput);
+// priorityInput.addEventListener("change", onInput);
+// checkboxInput.addEventListener("input", onCheckbox);
+form.addEventListener("submit", onSubmit);
