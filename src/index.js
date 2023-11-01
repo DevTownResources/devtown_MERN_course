@@ -1,25 +1,54 @@
-// function onClear() {
-//   console.log("onClear func");
-// }
+const logo = document.querySelector("img");
 
-const clearBtn = document.querySelector("#clear");
+const onClick = (e) => {
+  //   console.log("clicked");
+  //   console.log(e);
+  //   console.log(e.target);
+  //   console.log(e.currentTarget);
+  //   console.log(e.type);
+  //   console.log(e.timeStamp);
+  console.log(e.clientX, e.clientY);
+};
 
-// clearBtn.onclick = function () {
-//   console.log("onclick");
+document.querySelector("a").addEventListener("click", (e) => {
+  e.preventDefault();
+  console.log("clicked");
+});
+
+document.querySelector("body").addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
+
+// document.body.addEventListener("click", (e) => {
+//   console.log(e.target);
+//   console.log(e.currentTarget);
+// });
+
+// const onMouseOver = () => {
+//   console.log("mouse is over");
+//   if (document.body.style.backgroundColor === "purple") {
+//     document.body.style.backgroundColor = "lightgray";
+//   } else {
+//     document.body.style.backgroundColor = "purple";
+//   }
 // };
-// clearBtn.onclick = function () {
-//   console.log("onclick 2");
+
+// const onMouseOut = () => {
+//   console.log("mouse is out");
+//   //   document.body.style.backgroundColor = "lightgray";
 // };
 
-function onClear() {
-  const itemList = document.querySelector("ul");
-  const items = itemList.querySelectorAll("li");
-  //   itemList.innerHTML = "";
+// const onMouseDown = () => {
+//   console.log("mouse is down");
+// };
 
-  items.forEach((item) => item.remove());
-}
+// const onMouseUp = () => {
+//   console.log("mouse is up");
+// };
 
-// clearBtn.addEventListener("click", () => console.log("addEventListener"));
-clearBtn.addEventListener("click", onClear);
-
-// setTimeout(() => clearBtn.removeEventListener("click", onClear), 4000);
+// Events listeners
+logo.addEventListener("click", onClick);
+// logo.addEventListener("mouseover", onMouseOver);
+// logo.addEventListener("mouseout", onMouseOut);
+// logo.addEventListener("mousedown", onMouseDown);
+// logo.addEventListener("mouseup", onMouseUp);
