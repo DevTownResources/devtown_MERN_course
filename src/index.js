@@ -1,54 +1,46 @@
-const logo = document.querySelector("img");
+const itemInput = document.querySelector("#item-input");
 
-const onClick = (e) => {
-  //   console.log("clicked");
-  //   console.log(e);
-  //   console.log(e.target);
-  //   console.log(e.currentTarget);
-  //   console.log(e.type);
-  //   console.log(e.timeStamp);
-  console.log(e.clientX, e.clientY);
+const onKeyPress = (e) => {
+  console.log("key press");
 };
 
-document.querySelector("a").addEventListener("click", (e) => {
-  e.preventDefault();
-  console.log("clicked");
-});
+const onKeyUp = (e) => {
+  console.log("key up");
+};
 
-document.querySelector("body").addEventListener("contextmenu", (e) => {
-  e.preventDefault();
-});
+const onKeyDown = (e) => {
+  //   console.log("key down");
 
-// document.body.addEventListener("click", (e) => {
-//   console.log(e.target);
-//   console.log(e.currentTarget);
-// });
+  // Key
+  if (e.key === "Enter") {
+    alert("You press Enter");
+  }
 
-// const onMouseOver = () => {
-//   console.log("mouse is over");
-//   if (document.body.style.backgroundColor === "purple") {
-//     document.body.style.backgroundColor = "lightgray";
-//   } else {
-//     document.body.style.backgroundColor = "purple";
-//   }
-// };
+  // KeyCode
+  // https://www.toptal.com/developers/keycode/table
+  if (e.keyCode === 13) {
+    alert("You press Enter");
+  }
 
-// const onMouseOut = () => {
-//   console.log("mouse is out");
-//   //   document.body.style.backgroundColor = "lightgray";
-// };
+  // Code
+  //   console.log(e.code);
+  if (e.code === "Digit1") {
+    console.log("You press 1");
+  }
 
-// const onMouseDown = () => {
-//   console.log("mouse is down");
-// };
+  // repeat
+  if (e.repeat) {
+    console.log("You press and hold " + e.key);
+  }
 
-// const onMouseUp = () => {
-//   console.log("mouse is up");
-// };
+  console.log("Shift " + e.shiftKey);
+  console.log("Ctrl " + e.ctrlKey);
 
-// Events listeners
-logo.addEventListener("click", onClick);
-// logo.addEventListener("mouseover", onMouseOver);
-// logo.addEventListener("mouseout", onMouseOut);
-// logo.addEventListener("mousedown", onMouseDown);
-// logo.addEventListener("mouseup", onMouseUp);
+  if (e.shiftKey && e.key === "K") {
+    console.log("You press shift + k");
+  }
+};
+
+// itemInput.addEventListener("keypress", onKeyPress);
+// itemInput.addEventListener("keyup", onKeyUp);
+itemInput.addEventListener("keydown", onKeyDown);
