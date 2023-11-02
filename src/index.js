@@ -1,37 +1,21 @@
-const itemInput = document.querySelector("#item-input");
-const priorityInput = document.querySelector("#priority-input");
-const checkboxInput = document.querySelector("#checkbox");
-const form = document.querySelector("#item-form");
+const button = document.querySelector("form button");
+const div = document.querySelector("form div:nth-child(2)");
+const form = document.querySelector("form");
 
-const onInput = (e) => {
-  console.log(e.target.value);
-  //   console.log(itemInput.value);
-};
+button.addEventListener("click", (event) => {
+  alert("Button was clicked");
+  //   event.stopPropagation();
+});
 
-const onCheckbox = (e) => {
-  console.log(e.target.checked);
-};
+div.addEventListener("click", (event) => {
+  alert("Div was clicked");
+  event.stopPropagation();
+});
 
-const onSubmit = (e) => {
-  e.preventDefault();
-  //   console.log("submit");
-  //   console.log(itemInput.value);
-  //   console.log(priorityInput.value);
-  //   console.log(checkboxInput.checked);
-  const formData = new FormData(form);
+form.addEventListener("click", (event) => {
+  alert("Form was clicked");
+});
 
-  const itemName = formData.get("item");
-  if (itemName === "") {
-    alert("Please enter an item");
-    return;
-  }
-
-  console.log(itemName);
-  console.log(formData.get("priority"));
-  console.log(formData.get("check"));
-};
-
-// itemInput.addEventListener("input", onInput);
-// priorityInput.addEventListener("change", onInput);
-// checkboxInput.addEventListener("input", onCheckbox);
-form.addEventListener("submit", onSubmit);
+document.body.addEventListener("click", (event) => {
+  alert("Body was clicked");
+});
