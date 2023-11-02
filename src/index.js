@@ -58,6 +58,20 @@ function clearItems(e) {
   checkUI();
 }
 
+function filterItems(e) {
+  const items = document.querySelectorAll("li");
+  const searchText = e.target.value.toLowerCase();
+  items.forEach((item) => {
+    const itemName = item.textContent.toLowerCase();
+
+    if (itemName.indexOf(searchText) != -1) {
+      item.style.display = "flex";
+    } else {
+      item.style.display = "none";
+    }
+  });
+}
+
 function checkUI() {
   const items = document.querySelectorAll("li");
   if (items.length === 0) {
@@ -73,5 +87,6 @@ function checkUI() {
 form.addEventListener("submit", addItem);
 itemList.addEventListener("click", removeItem);
 clearBtn.addEventListener("click", clearItems);
+filter.addEventListener("input", filterItems);
 
 checkUI();
