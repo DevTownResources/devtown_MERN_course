@@ -4,6 +4,12 @@ const itemList = document.querySelector("#item-list");
 const clearBtn = document.querySelector("#clear");
 const filter = document.querySelector("#filter");
 
+function displayItems() {
+  const itemsFromStorage = getItemsFromStorage();
+  itemsFromStorage.forEach((item) => addItemToDom(item));
+  checkUI();
+}
+
 function onAddItemSubmit(e) {
   e.preventDefault();
 
@@ -37,6 +43,13 @@ function addItemToDom(item) {
 }
 
 function addItemToStorage(item) {
+  const itemsFromStorage = getItemsFromStorage();
+
+  itemsFromStorage.push(item);
+  localStorage.setItem("items", JSON.stringify(itemsFromStorage));
+}
+
+function getItemsFromStorage() {
   let itemsFromStorage;
 
   if (localStorage.getItem("items") === null) {
@@ -44,8 +57,7 @@ function addItemToStorage(item) {
   } else {
     itemsFromStorage = JSON.parse(localStorage.getItem("items"));
   }
-  itemsFromStorage.push(item);
-  localStorage.setItem("items", JSON.stringify(itemsFromStorage));
+  return itemsFromStorage;
 }
 
 function createButton(classes) {
@@ -64,9 +76,25 @@ function createIcon(classes) {
 
 function removeItem(e) {
   if (e.target.parentElement.classList.contains("remove-item")) {
+    // Remove item from DOM
     e.target.parentElement.parentElement.remove();
+
+    // Remove item from storage
+    removeItemFromStorage(e.target.parentElement.parentElement);
+
     checkUI();
   }
+}
+
+function removeItemFromStorage(item) {
+  const text = item.textContent;
+  let itemsFromStorage = getItemsFromStorage();
+
+  // filter the items
+  itemsFromStorage = itemsFromStorage.filter((curItem) => curItem !== text);
+
+  // set the new items to local storage
+  localStorage.setItem("items", JSON.stringify(itemsFromStorage));
 }
 
 function clearItems(e) {
@@ -105,5 +133,6 @@ form.addEventListener("submit", onAddItemSubmit);
 itemList.addEventListener("click", removeItem);
 clearBtn.addEventListener("click", clearItems);
 filter.addEventListener("input", filterItems);
+document.addEventListener("DOMContentLoaded", displayItems);
 
 checkUI();
