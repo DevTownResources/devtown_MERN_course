@@ -4,7 +4,7 @@ const itemList = document.querySelector("#item-list");
 const clearBtn = document.querySelector("#clear");
 const filter = document.querySelector("#filter");
 
-function addItem(e) {
+function onAddItemSubmit(e) {
   e.preventDefault();
 
   const newItem = itemInput.value;
@@ -15,20 +15,37 @@ function addItem(e) {
     return;
   }
 
+  addItemToDom(newItem);
+  addItemToStorage(newItem);
+
+  // Clear input
+  itemInput.value = "";
+
+  checkUI();
+}
+
+function addItemToDom(item) {
   // Add new item to list
   const li = document.createElement("li");
-  li.appendChild(document.createTextNode(newItem));
+  li.appendChild(document.createTextNode(item));
 
   const button = createButton("remove-item btn-link text-red");
 
   li.appendChild(button);
 
   itemList.appendChild(li);
+}
 
-  // Clear input
-  itemInput.value = "";
+function addItemToStorage(item) {
+  let itemsFromStorage;
 
-  checkUI();
+  if (localStorage.getItem("items") === null) {
+    itemsFromStorage = [];
+  } else {
+    itemsFromStorage = JSON.parse(localStorage.getItem("items"));
+  }
+  itemsFromStorage.push(item);
+  localStorage.setItem("items", JSON.stringify(itemsFromStorage));
 }
 
 function createButton(classes) {
@@ -84,15 +101,9 @@ function checkUI() {
 }
 
 // Event listeners
-form.addEventListener("submit", addItem);
+form.addEventListener("submit", onAddItemSubmit);
 itemList.addEventListener("click", removeItem);
 clearBtn.addEventListener("click", clearItems);
 filter.addEventListener("input", filterItems);
 
 checkUI();
-
-localStorage.setItem("name", "Priya");
-console.log(localStorage.getItem("name"));
-// localStorage.removeItem("name");
-localStorage.setItem("country", "India");
-localStorage.clear();
