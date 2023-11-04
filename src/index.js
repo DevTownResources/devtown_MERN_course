@@ -90,3 +90,9 @@ clearBtn.addEventListener("click", clearItems);
 filter.addEventListener("input", filterItems);
 
 checkUI();
+
+localStorage.setItem("name", "Priya");
+console.log(localStorage.getItem("name"));
+// localStorage.removeItem("name");
+localStorage.setItem("country", "India");
+localStorage.clear();
