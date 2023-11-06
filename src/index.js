@@ -21,6 +21,11 @@ function onAddItemSubmit(e) {
     return;
   }
 
+  if (checkIfItemExists(newItem)) {
+    alert("Item already exists");
+    return;
+  }
+
   addItemToDom(newItem);
   addItemToStorage(newItem);
 
@@ -76,13 +81,15 @@ function createIcon(classes) {
 
 function removeItem(e) {
   if (e.target.parentElement.classList.contains("remove-item")) {
-    // Remove item from DOM
-    e.target.parentElement.parentElement.remove();
+    if (confirm("Are you sure you want to delete this item?")) {
+      // Remove item from DOM
+      e.target.parentElement.parentElement.remove();
 
-    // Remove item from storage
-    removeItemFromStorage(e.target.parentElement.parentElement);
+      // Remove item from storage
+      removeItemFromStorage(e.target.parentElement.parentElement);
 
-    checkUI();
+      checkUI();
+    }
   }
 }
 
@@ -99,7 +106,10 @@ function removeItemFromStorage(item) {
 
 function clearItems(e) {
   const items = document.querySelectorAll("li");
-  items.forEach((item) => item.remove());
+  items.forEach((item) => {
+    item.remove();
+    removeItemFromStorage(item);
+  });
   checkUI();
 }
 
@@ -126,6 +136,11 @@ function checkUI() {
     clearBtn.style.display = "block";
     filter.style.display = "block";
   }
+}
+
+function checkIfItemExists(item) {
+  const items = getItemsFromStorage();
+  return items.includes(item);
 }
 
 // Event listeners
