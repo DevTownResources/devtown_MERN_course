@@ -1,13 +1,15 @@
-console.log(1);
-console.log(2);
-// for(let i=0; i<1000000000; i++){}
+console.log("start");
 
-// setTimeout(() => {
-//   console.log("inside timeout");
-// }, 5000);
 setTimeout(() => {
   console.log("inside timeout");
 }, 0);
 
-console.log(3);
-console.log(4);
+console.log("end");
+console.log("end 1");
+console.log("end 2");
+
+setTimeout(() => {
+  console.log("inside timeout 2");
+}, 1000);
+
+console.log("end 3");
