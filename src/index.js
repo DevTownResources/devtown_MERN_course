@@ -1,15 +1,20 @@
-console.log("start");
+function changeText() {
+  const heading = document.querySelector("h1");
+  heading.innerHTML = "changed by timer";
+}
+// const timerId = setTimeout(changeText, 4000);
 
-setTimeout(() => {
-  console.log("inside timeout");
-}, 0);
+let counter = 0;
+const intervalId = setInterval(() => {
+  console.log("Hey");
+  if (counter === 5) {
+    clearInterval(intervalId);
+  }
+  counter++;
+}, 3000);
 
-console.log("end");
-console.log("end 1");
-console.log("end 2");
-
-setTimeout(() => {
-  console.log("inside timeout 2");
-}, 1000);
-
-console.log("end 3");
+document.querySelector("#stop").addEventListener("click", () => {
+  // clearTimeout(timerId);
+  clearInterval(intervalId);
+  console.log("timer stopped");
+});
