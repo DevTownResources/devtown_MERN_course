@@ -1,39 +1,41 @@
-// document.querySelector("button").addEventListener("click", () => {
-//   console.log("this is callback func");
-// });
-
-// function greet(name, callback) {
-//   console.log(`Hello ${name}`);
-//   callback();
-// }
-
-// greet("Priya", () => {
-//   console.log("I am a software developer");
-// });
-// greet("Kartik", () => {
-//   console.log("I am a consultant, and I have good life");
-// });
-
 const posts = [
   { title: "Post One", body: "This is post one" },
   { title: "Post Two", body: "This is post two" },
 ];
 
-function getPosts() {
-  setTimeout(() => {
-    let output = "";
-    posts.forEach((post) => {
-      output += `<li>${post.title}</li>`;
-    });
-    document.body.innerHTML = output;
-  }, 1000);
-}
+const authors = [
+  { name: "John Doe", age: 40 },
+  { name: "Jane Doe", age: 30 },
+  { name: "Jane Doe", age: 30 },
+];
 
-function createPost(post, cb) {
+const comments = [
+  { postID: 1, body: "This is comment one" },
+  { postID: 2, body: "This is comment two" },
+  { postID: 3, body: "This is comment three" },
+  { postID: 3, body: "This is comment three" },
+];
+
+function getPosts(cb) {
   setTimeout(() => {
-    posts.push(post);
+    console.log(posts);
     cb();
-  }, 2000);
+  }, Math.floor(Math.random() * 3000) + 1000);
+}
+function getAuthors(cb) {
+  setTimeout(() => {
+    console.log(authors);
+    cb();
+  }, Math.floor(Math.random() * 3000) + 1000);
+}
+function getComments() {
+  setTimeout(() => {
+    console.log(comments);
+  }, Math.floor(Math.random() * 3000) + 1000);
 }
 
-createPost({ title: "Post Three", body: "This is post three" }, getPosts);
+getPosts(() => {
+  getAuthors(() => {
+    getComments();
+  });
+});
