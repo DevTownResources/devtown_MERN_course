@@ -1,9 +1,21 @@
-fetch("https://api.github.com/users")
-  .then((response) => response.json())
-  .then((data) => console.log(data))
-  .catch((error) => console.log(error));
+function createPost({ title, body }) {
+  fetch("https://jsonplaceholder.typicode.com/posts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      token: "my-token",
+    },
+    body: JSON.stringify({
+      title,
+      body,
+      userId: 1,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+}
 
-fetch("https://jsonplaceholder.typicode.com/posts/1/comments")
-  .then((response) => response.json())
-  .then((data) => console.log(data))
-  .catch((error) => console.log(error));
+createPost({
+  title: "foo",
+  body: "bar lorem ipsum dolor sit amet",
+});
