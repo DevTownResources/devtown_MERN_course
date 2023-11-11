@@ -1,21 +1,51 @@
-function createPost({ title, body }) {
-  fetch("https://jsonplaceholder.typicode.com/posts", {
+const apiUrl = "https://jsonplaceholder.typicode.com/todos";
+
+const getToDos = () => {
+  fetch(apiUrl + "?_limit=5")
+    .then((res) => res.json())
+    .then((data) => {
+      data.forEach((todo) => {
+        addToDoToDOM(todo);
+      });
+    });
+};
+
+const addToDoToDOM = (todo) => {
+  const div = document.createElement("div");
+  div.classList.add("todo");
+  div.appendChild(document.createTextNode(todo.title));
+
+  div.setAttribute("data-id", todo.id);
+
+  if (todo.completed) {
+    div.classList.add("done");
+  }
+
+  document.getElementById("todo-list").appendChild(div);
+};
+
+const createToDo = (e) => {
+  e.preventDefault();
+
+  const newTodo = {
+    title: document.querySelector("#todo-form input").value,
+    completed: false,
+  };
+
+  fetch(apiUrl, {
     method: "POST",
+    body: JSON.stringify(newTodo),
     headers: {
       "Content-Type": "application/json",
-      token: "my-token",
     },
-    body: JSON.stringify({
-      title,
-      body,
-      userId: 1,
-    }),
   })
-    .then((response) => response.json())
-    .then((data) => console.log(data));
-}
+    .then((res) => res.json())
+    .then((data) => addToDoToDOM(data));
+};
 
-createPost({
-  title: "foo",
-  body: "bar lorem ipsum dolor sit amet",
-});
+const init = () => {
+  document.addEventListener("DOMContentLoaded", getToDos);
+  document.querySelector("#todo-form").addEventListener("submit", createToDo);
+};
+
+init();
