@@ -1,49 +1,40 @@
-const apiURL = "https://httpstat.us";
+// const promise = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve({ name: "Priya", age: 21 });
+//   }, 1000);
+// });
 
-// fetch(`${apiURL}/200`)
-//   .then((res) => {
-//     return res;
-//   })
-//   .then(() => {
-//     console.log("success");
-//   });
+// promise.then((data) => console.log(data));
 
-// Network error will be caught in the catch block
-// fetch(`https://priyabihani.com`)
-//   .then((res) => {
-//     return res;
-//   })
-//   .then(() => {
-//     console.log("success");
-//   })
-//   .catch((err) => {
-//     console.log("error", err);
-//   });
+// async function consumePromise() {
+//   const data = await promise;
+//   console.log(data);
+// }
 
-fetch(`${apiURL}/500`)
-  .then((res) => {
-    if (!res.ok) {
-      throw new Error("Something went wrong");
-    }
-    return res;
-  })
-  .then(() => {
-    console.log("success");
-  })
-  .catch((err) => {
-    console.log("catch block", err);
-  });
+// consumePromise();
 
-fetch(`${apiURL}/500`)
-  .then((res) => {
-    if (res.status === 500) {
-      throw new Error("Something went wrong");
-    }
-    return res;
-  })
-  .then(() => {
-    console.log("success");
-  })
-  .catch((err) => {
-    console.log("catch block", err);
-  });
+async function getUsers() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const data = await res.json();
+  console.log(data);
+}
+
+getUsers();
+
+function getPosts() {
+  fetch("https://jsonplaceholder.typicode.com/posts")
+    .then((res) => res.json())
+    .then((data) => console.log(data));
+}
+
+getPosts();
+
+const getTodos = async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const data = await res.json();
+  console.log(data);
+};
+
+getTodos();
+
+console.log("Hello");
