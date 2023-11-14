@@ -43,9 +43,45 @@ const createToDo = (e) => {
     .then((data) => addToDoToDOM(data));
 };
 
+const toggleCompleted = (e) => {
+  if (e.target.classList.contains("todo")) {
+    e.target.classList.toggle("done");
+    updateToDo(e.target.dataset.id, e.target.classList.contains("done"));
+  }
+};
+
+const updateToDo = (id, completed) => {
+  fetch(`${apiUrl}/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify({ completed }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data));
+};
+
+const deleteToDo = (e) => {
+  if (e.target.classList.contains("todo")) {
+    const id = e.target.dataset.id;
+    fetch(`${apiUrl}/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then(() => {
+        e.target.remove();
+      });
+  }
+};
+
 const init = () => {
   document.addEventListener("DOMContentLoaded", getToDos);
   document.querySelector("#todo-form").addEventListener("submit", createToDo);
+  document
+    .querySelector("#todo-list")
+    .addEventListener("click", toggleCompleted);
+  document.querySelector("#todo-list").addEventListener("dblclick", deleteToDo);
 };
 
 init();
