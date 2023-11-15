@@ -1,40 +1,22 @@
-// const promise = new Promise((resolve, reject) => {
-//   setTimeout(() => {
-//     resolve({ name: "Priya", age: 21 });
-//   }, 1000);
-// });
-
-// promise.then((data) => console.log(data));
-
-// async function consumePromise() {
-//   const data = await promise;
-//   console.log(data);
+// try {
+//   console.log(x);
+// } catch (error) {
+//   console.log("error", error);
 // }
 
-// consumePromise();
+const httpStatus = async () => {
+  try {
+    const res = await fetch("https://httpstat.us/500");
 
-async function getUsers() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
-  const data = await res.json();
-  console.log(data);
-}
+    if (!res.ok) {
+      throw new Error("Something went wrong");
+    }
 
-getUsers();
-
-function getPosts() {
-  fetch("https://jsonplaceholder.typicode.com/posts")
-    .then((res) => res.json())
-    .then((data) => console.log(data));
-}
-
-getPosts();
-
-const getTodos = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
-  const data = await res.json();
-  console.log(data);
+    const data = await res.text();
+    console.log("THis is data", data);
+  } catch (err) {
+    console.log("error", err);
+  }
 };
 
-getTodos();
-
-console.log("Hello");
+httpStatus();
