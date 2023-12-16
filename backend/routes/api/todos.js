@@ -1,5 +1,7 @@
 const express = require("express");
+
 const Todo = require("../../models/todo");
+
 const { authMiddleware } = require("../../middlewares");
 const { readFromFile, writeToFile } = require("../../utils");
 const { v4: uuidv4 } = require("uuid");
@@ -8,7 +10,8 @@ const router = express.Router();
 
 router.get("/", authMiddleware, async (req, res) => {
   try {
-    const todos = await Todo.find().sort({ createdAt: -1 }).limit(10);
+    // const todos = await Todo.find().sort({ createdAt: -1 }).limit(5);
+    const todos = await Todo.find();
 
     res.status(200).json({
       status: "success",
