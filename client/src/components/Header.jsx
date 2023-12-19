@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { nanoid } from "nanoid";
+import "../styles/Header.css";
 
 function Header({ setTodos }) {
   const [todo, setTodo] = useState("");
@@ -8,31 +9,26 @@ function Header({ setTodos }) {
     setTodo(e.target.value);
   };
 
-  const handleSubmit = () => {
-    if (todo) {
-      setTodos((prevTodos) => [
-        ...prevTodos,
-        {
-          id: nanoid(),
-          text: todo,
-          isCompleted: false,
-        },
-      ]);
-      setTodo("");
-    }
+  const handleAddTodo = () => {
+    setTodos((prevTodo) => [
+      ...prevTodo,
+      { id: nanoid(), text: todo, isCompleted: false },
+    ]);
+    setTodo("");
   };
 
   return (
-    <>
+    <div>
       <h1>Todo List</h1>
       <input
         value={todo}
         onChange={handleChange}
         type="text"
-        placeholder="Add a new task"
+        placeholder="Add a new todo"
       />
-      <button onClick={handleSubmit}>Add</button>
-    </>
+      <button onClick={handleAddTodo}>Add</button>
+    </div>
   );
 }
+
 export default Header;

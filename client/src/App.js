@@ -1,21 +1,22 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import Todo from "./components/Todo";
+import "./App.css";
 
 function App() {
   const [todos, setTodos] = useState([]);
 
   const handleDelete = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
   const handleComplete = (id) => {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id === id) {
-          todo.isCompleted = !todo.isCompleted;
-        }
-        return todo;
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) => {
+        return {
+          ...todo,
+          isCompleted: todo.id === id ? !todo.isCompleted : todo.isCompleted,
+        };
       })
     );
   };
