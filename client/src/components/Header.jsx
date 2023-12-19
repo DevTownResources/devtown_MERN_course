@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { nanoid } from "nanoid";
-import "../styles/Header.css";
+import "../styles/header.css";
 
 function Header({ setTodos }) {
   const [todo, setTodo] = useState("");
@@ -18,15 +18,18 @@ function Header({ setTodos }) {
   };
 
   return (
-    <div>
-      <h1>Todo List</h1>
+    <div className="header-container">
+      <h1 className="header-title">Todo List</h1>
       <input
         value={todo}
         onChange={handleChange}
         type="text"
         placeholder="Add a new todo"
+        className="header-input"
       />
-      <button onClick={handleAddTodo}>Add</button>
+      <button onClick={handleAddTodo} className="header-button">
+        Add
+      </button>
     </div>
   );
 }

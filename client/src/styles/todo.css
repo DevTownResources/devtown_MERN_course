@@ -1,0 +1,42 @@
+/* TODOS */
+
+.todo-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: start;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #ddd;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.todo-text {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.todo-text.completed {
+  text-decoration: line-through;
+  color: red;
+}
+
+.todo-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.complete-button {
+  background-color: #007bff;
+  color: white;
+  margin-right: 10px;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+}

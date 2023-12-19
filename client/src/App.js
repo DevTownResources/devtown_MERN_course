@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import Todo from "./components/Todo";
-import "./App.css";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -23,17 +22,19 @@ function App() {
 
   return (
     <div className="App">
-      <Header setTodos={setTodos} />
-      <br />
-      <br />
-      {todos.map((todo) => (
-        <Todo
-          key={todo.id}
-          todo={todo}
-          handleDelete={handleDelete}
-          handleComplete={handleComplete}
-        />
-      ))}
+      <div className="container">
+        <Header setTodos={setTodos} />
+        <br />
+        <br />
+        {todos.map((todo) => (
+          <Todo
+            key={todo.id}
+            todo={todo}
+            handleDelete={handleDelete}
+            handleComplete={handleComplete}
+          />
+        ))}
+      </div>
     </div>
   );
 }
