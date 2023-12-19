@@ -1,40 +1,25 @@
 import { useState } from "react";
-import Header from "./components/Header";
-import Todo from "./components/Todo";
+import Navbar from "./components/Navbar";
+import Counter from "./components/Counter";
+import Home from "./components/Home";
+import Timer from "./components/Timer";
+import Posts from "./components/Posts";
 
 function App() {
-  const [todos, setTodos] = useState([]);
-
-  const handleDelete = (id) => {
-    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
-  };
-
-  const handleComplete = (id) => {
-    setTodos((prevTodos) =>
-      prevTodos.map((todo) => {
-        return {
-          ...todo,
-          isCompleted: todo.id === id ? !todo.isCompleted : todo.isCompleted,
-        };
-      })
-    );
-  };
-
+  const [view, setView] = useState("home");
+  const changeView = (view) => setView(view);
   return (
     <div className="App">
-      <div className="container">
-        <Header setTodos={setTodos} />
-        <br />
-        <br />
-        {todos.map((todo) => (
-          <Todo
-            key={todo.id}
-            todo={todo}
-            handleDelete={handleDelete}
-            handleComplete={handleComplete}
-          />
-        ))}
-      </div>
+      <Navbar changeView={changeView} />
+      {view === "home" ? (
+        <Home />
+      ) : view === "counter" ? (
+        <Counter />
+      ) : view === "timer" ? (
+        <Timer />
+      ) : (
+        <Posts />
+      )}
     </div>
   );
 }
