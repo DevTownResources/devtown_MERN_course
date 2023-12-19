@@ -1,27 +1,38 @@
 import { useState } from "react";
 import Header from "./components/Header";
-import TodoList from "./components/TodoList";
-import Footer from "./components/Footer";
+import Todo from "./components/Todo";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState([]);
 
-  const handleInc = () => {
-    setCount(count + 1);
-    console.log(count);
+  const handleDelete = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  const handleDec = () => {
-    setCount((prevVal) => prevVal - 1);
-    console.log(count);
+  const handleComplete = (id) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          todo.isCompleted = !todo.isCompleted;
+        }
+        return todo;
+      })
+    );
   };
 
   return (
     <div className="App">
-      <button onClick={handleDec}> - </button>
+      <Header setTodos={setTodos} />
       <br />
-      {count} <br />
-      <button onClick={handleInc}> + </button>
+      <br />
+      {todos.map((todo) => (
+        <Todo
+          key={todo.id}
+          todo={todo}
+          handleDelete={handleDelete}
+          handleComplete={handleComplete}
+        />
+      ))}
     </div>
   );
 }
