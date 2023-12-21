@@ -1,25 +1,47 @@
 import { useState } from "react";
-import Navbar from "./components/Navbar";
-import Counter from "./components/Counter";
-import Home from "./components/Home";
-import Timer from "./components/Timer";
-import Posts from "./components/Posts";
+
+import Header from "./layouts/Header";
+import Footer from "./layouts/Footer";
+
+import Search from "./components/Search";
+import Recipe from "./components/Recipe";
 
 function App() {
-  const [view, setView] = useState("home");
-  const changeView = (view) => setView(view);
+  const [recipes, setRecipes] = useState([]);
+  const [loader, setLoader] = useState(false);
+
+  const handleSubmit = async (searchTerm) => {
+    setRecipes([]);
+    setLoader(true);
+    try {
+      const response = await fetch(
+        `https://api.edamam.com/api/recipes/v2?type=public&q=${searchTerm}&app_id=e57ce14d&app_key=fb9063a7966d7bd1fa3921eca5e34f57`
+      );
+      const data = await response.json();
+      console.log(data);
+      setRecipes(data.hits);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoader(false);
+    }
+  };
+
   return (
     <div className="App">
-      <Navbar changeView={changeView} />
-      {view === "home" ? (
-        <Home />
-      ) : view === "counter" ? (
-        <Counter />
-      ) : view === "timer" ? (
-        <Timer />
-      ) : (
-        <Posts />
-      )}
+      <Header />
+      <Search handleSubmit={handleSubmit} />
+
+      {loader && <div className="text-center bold">Loading...</div>}
+
+      <div className="flex flex-wrap container mx-auto align-center justify-center">
+        {recipes.length > 0 &&
+          recipes.map((recipe) => (
+            <Recipe key={recipe.recipe.uri} recipe={recipe.recipe} />
+          ))}
+      </div>
+
+      <Footer />
     </div>
   );
 }
