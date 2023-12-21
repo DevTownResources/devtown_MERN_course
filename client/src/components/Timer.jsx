@@ -9,10 +9,6 @@ function Timer() {
     }, 1000);
   }, []);
 
-  //   useEffect(() => {
-  //     console.log("time changed");
-  //   });
-
   return <div>{time}</div>;
 }
 

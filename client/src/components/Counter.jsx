@@ -4,16 +4,27 @@ function Counter() {
   const [count, setCount] = useState(0);
   const [name, setName] = useState("John");
 
-  const clicked = () => {
-    console.log("clicked");
-  };
+  //   useEffect(() => {
+
+  //   })
+
+  //   useEffect(() => {
+  //     console.log("component mounted");
+  //     return () => {
+  //       console.log("component unmounted");
+  //     };
+  //   }, []);
 
   useEffect(() => {
-    document.addEventListener("click", clicked);
+    console.log("count", count);
     return () => {
-      document.removeEventListener("click", clicked);
+      console.log("count cleanup", count);
     };
   }, [count]);
+
+  //   useEffect(() => {
+  //     console.log("name");
+  //   }, [name]);
 
   return (
     <div>
@@ -23,12 +34,13 @@ function Counter() {
       <br />
       <br />
       <br />
+      <br />
+      <h1>This is name: {name}</h1>
       <input
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <h1> this is name {name}</h1>
     </div>
   );
 }
