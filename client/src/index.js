@@ -5,15 +5,35 @@ import "./index.css";
 import App from "./App";
 import Home from "./components/Home";
 import Counter from "./components/Counter";
+import Timer from "./components/Timer";
+import Posts from "./components/Posts";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/counter",
+        element: <Counter />,
+      },
+      {
+        path: "/timer",
+        element: <Timer />,
+      },
+      {
+        path: "/posts",
+        element: <Posts />,
+      },
+    ],
   },
   {
-    path: "/counter",
-    element: <Counter />,
+    path: "/signup",
+    element: <div>Signup</div>,
   },
 ]);
 

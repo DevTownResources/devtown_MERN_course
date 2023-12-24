@@ -1,26 +1,13 @@
-import { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Counter from "./components/Counter";
-import Home from "./components/Home";
-import Timer from "./components/Timer";
-import Posts from "./components/Posts";
+import Footer from "./components/Footer";
 
 function App() {
-  const [view, setView] = useState("home");
-  const changeView = (view) => setView(view);
-
   return (
     <div className="App">
-      <Navbar changeView={changeView} />
-      {view === "home" ? (
-        <Home />
-      ) : view === "counter" ? (
-        <Counter />
-      ) : view === "timer" ? (
-        <Timer />
-      ) : (
-        <Posts />
-      )}
+      <Navbar />
+      <Outlet />
+      <Footer />
     </div>
   );
 }

@@ -1,29 +1,19 @@
-function Navbar({ changeView }) {
+import { Link } from "react-router-dom";
+
+function Navbar() {
   return (
     <ul className="flex justify-center">
-      <li
-        onClick={() => changeView("home")}
-        className="text-indigo-500 underline mx-4 hover:cursor-pointer"
-      >
-        Home
+      <li className="text-indigo-500 underline mx-4 hover:cursor-pointer">
+        <Link to="/">Home</Link>
       </li>
-      <li
-        onClick={() => changeView("counter")}
-        className="text-indigo-500 underline mx-4 hover:cursor-pointer"
-      >
-        Counter
+      <li className="text-indigo-500 underline mx-4 hover:cursor-pointer">
+        <Link to="/counter">Counter</Link>
       </li>
-      <li
-        onClick={() => changeView("timer")}
-        className="text-indigo-500 underline mx-4 hover:cursor-pointer"
-      >
-        Timer
+      <li className="text-indigo-500 underline mx-4 hover:cursor-pointer">
+        <Link to="/timer">Timer </Link>
       </li>
-      <li
-        onClick={() => changeView("posts")}
-        className="text-indigo-500 underline mx-4 hover:cursor-pointer"
-      >
-        Posts
+      <li className="text-indigo-500 underline mx-4 hover:cursor-pointer">
+        <Link to="/posts">Posts</Link>
       </li>
     </ul>
   );
