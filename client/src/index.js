@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import Counter from "./components/Counter";
 import Timer from "./components/Timer";
 import Posts from "./components/Posts";
+import Post from "./components/Post";
 
 const router = createBrowserRouter([
   {
@@ -14,20 +15,24 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/",
+        path: "",
         element: <Home />,
       },
       {
-        path: "/counter",
+        path: "counter",
         element: <Counter />,
       },
       {
-        path: "/timer",
+        path: "timer",
         element: <Timer />,
       },
       {
-        path: "/posts",
+        path: "posts",
         element: <Posts />,
+      },
+      {
+        path: "posts/:postId",
+        element: <Post />,
       },
     ],
   },
@@ -40,7 +45,6 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
     <RouterProvider router={router} />
   </React.StrictMode>
 );
