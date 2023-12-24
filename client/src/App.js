@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Counter from "./components/Counter";
 import Home from "./components/Home";
@@ -8,6 +8,7 @@ import Posts from "./components/Posts";
 function App() {
   const [view, setView] = useState("home");
   const changeView = (view) => setView(view);
+
   return (
     <div className="App">
       <Navbar changeView={changeView} />

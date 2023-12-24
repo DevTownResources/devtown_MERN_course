@@ -1,15 +1,5 @@
-import { useState, useEffect } from "react";
-
 function Timer() {
-  const [time, setTime] = useState(0);
-
-  useEffect(() => {
-    setInterval(() => {
-      setTime((prevTime) => prevTime + 1);
-    }, 1000);
-  }, []);
-
-  return <div>{time}</div>;
+  return <div>Timer</div>;
 }
 
 export default Timer;
