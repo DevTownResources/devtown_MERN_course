@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { TodoContext } from "../context/TodoProvider";
 import { checkToken } from "../utils";
 
 import Header from "./Header";
@@ -8,30 +9,16 @@ import Todo from "./Todo";
 import hoc from "./withLogger";
 
 function Todos() {
-  const [todos, setTodos] = useState([]);
+  const { todos, setTodos } = useContext(TodoContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (checkToken()) {
-      getTodos();
+      // getTodos();
     } else {
       navigate("/login");
     }
   }, []);
-
-  const getTodos = async () => {
-    try {
-      const res = await fetch("http://localhost:8000/api/todos", {
-        credentials: "include",
-      });
-      if (res.ok) {
-        const { data } = await res.json();
-        setTodos(data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const handleDelete = async (id) => {
     try {

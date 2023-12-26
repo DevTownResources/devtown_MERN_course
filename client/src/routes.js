@@ -7,6 +7,7 @@ import Signup from "./components/Signup";
 import App from "./App";
 import Todos from "./components/Todos";
 import Login from "./components/Login";
+import Analytic from "./components/Analytic";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -14,6 +15,7 @@ const router = createBrowserRouter(
       <Route path="" element={<Todos />} />
       <Route path="signup" element={<Signup />} />
       <Route path="login" element={<Login />} />
+      <Route path="/analytic" element={<Analytic />} />
     </Route>
   )
 );
