@@ -5,6 +5,7 @@ import { checkToken } from "../utils";
 
 import Header from "./Header";
 import Todo from "./Todo";
+import hoc from "./withLogger";
 
 function Todos() {
   const [todos, setTodos] = useState([]);
@@ -81,4 +82,4 @@ function Todos() {
   );
 }
 
-export default Todos;
+export default hoc(Todos);

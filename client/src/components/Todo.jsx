@@ -1,6 +1,7 @@
 import "../styles/todo.css";
+import hoc from "./withLogger";
 
-function Todo({ todo, handleDelete, handleComplete }) {
+function Todo({ todo, handleDelete, handleComplete, extraProps }) {
   return (
     <div className="todo-container">
       <span className={`todo-text ${todo.isCompleted ? "completed" : ""}`}>
@@ -22,4 +23,4 @@ function Todo({ todo, handleDelete, handleComplete }) {
   );
 }
 
-export default Todo;
+export default hoc(Todo);
