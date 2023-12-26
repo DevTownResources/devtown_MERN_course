@@ -1,9 +1,22 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { checkToken } from "../utils";
+
 import Header from "./Header";
 import Todo from "./Todo";
 
 function Todos() {
   const [todos, setTodos] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (checkToken()) {
+      getTodos();
+    } else {
+      navigate("/login");
+    }
+  }, []);
 
   const getTodos = async () => {
     try {
@@ -12,17 +25,12 @@ function Todos() {
       });
       if (res.ok) {
         const { data } = await res.json();
-        console.log(data);
         setTodos(data);
       }
     } catch (error) {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    getTodos();
-  }, []);
 
   const handleDelete = async (id) => {
     try {
@@ -32,22 +40,29 @@ function Todos() {
       });
 
       if (res.ok) {
-        setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+        setTodos((prevTodos) => prevTodos.filter((todo) => todo._id !== id));
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleComplete = (id) => {
-    setTodos((prevTodos) =>
-      prevTodos.map((todo) => {
-        return {
-          ...todo,
-          isCompleted: todo.id === id ? !todo.isCompleted : todo.isCompleted,
-        };
-      })
-    );
+  const handleComplete = async (id) => {
+    const res = await fetch(`http://localhost:8000/api/todos/${id}`, {
+      method: "PATCH",
+      credentials: "include",
+    });
+
+    if (res.ok) {
+      setTodos((prevTodos) =>
+        prevTodos.map((todo) => {
+          return {
+            ...todo,
+            isCompleted: todo._id === id ? !todo.isCompleted : todo.isCompleted,
+          };
+        })
+      );
+    }
   };
   return (
     <div>

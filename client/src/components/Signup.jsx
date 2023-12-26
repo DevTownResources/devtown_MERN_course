@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { checkToken } from "../utils";
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -7,6 +8,12 @@ function Signup() {
   const [name, setName] = useState("");
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (checkToken()) {
+      navigate("/");
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
