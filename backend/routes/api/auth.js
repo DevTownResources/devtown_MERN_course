@@ -1,8 +1,6 @@
 const express = require("express");
-const { v4: uuidv4 } = require("uuid");
 const jwt = require("jsonwebtoken");
-
-const { readFromFile, writeToFile } = require("../../utils");
+const User = require("../../models/user");
 
 const router = express.Router();
 
@@ -12,9 +10,10 @@ router.post("/signup", async (req, res) => {
       return res.redirect("/todos");
     }
     const { email, name, password } = req.body;
-    const parsedData = await readFromFile("./users.json");
 
-    if (parsedData.find((ele) => ele.email === email)) {
+    const user = await User.findOne({ email });
+
+    if (user) {
       return res.status(400).json({
         status: "error",
         msg: "User already exists",
@@ -22,14 +21,12 @@ router.post("/signup", async (req, res) => {
       });
     }
 
-    const newUser = {
-      id: uuidv4(),
-      email,
+    const newUser = await User.create({
       name,
+      email,
       password,
-    };
-    parsedData.push(newUser);
-    await writeToFile("./users.json", parsedData);
+    });
+
     res.status(201).json({
       status: "success",
       msg: "User created successfully",
@@ -52,9 +49,7 @@ router.post("/login", async (req, res) => {
     }
     const { email, password } = req.body;
 
-    const parsedData = await readFromFile("./users.json");
-
-    const user = parsedData.find((ele) => ele.email === email);
+    const user = await User.findOne({ email });
 
     if (!user) {
       return res.status(404).json({
