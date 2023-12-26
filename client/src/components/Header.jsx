@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../styles/header.css";
 
-function Header({ setTodos }) {
+function Header({ setTodos, children }) {
   const [todo, setTodo] = useState("");
 
   const handleChange = (e) => {
@@ -31,6 +31,7 @@ function Header({ setTodos }) {
 
   return (
     <div className="header-container">
+      {children}
       <h1 className="header-title">Todo List</h1>
       <input
         value={todo}

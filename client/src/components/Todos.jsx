@@ -67,7 +67,11 @@ function Todos() {
   };
   return (
     <div>
-      <Header setTodos={setTodos} />
+      <Header setTodos={setTodos}>
+        <p>This is INSIDE HEADER IN TODOS</p>
+        <p>This is INSIDE HEADER IN TODOS</p>
+        <p>This is INSIDE HEADER IN TODOS</p>
+      </Header>
       <br />
       <br />
       {todos.map((todo) => (
