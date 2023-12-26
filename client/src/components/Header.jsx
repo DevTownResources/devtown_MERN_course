@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { nanoid } from "nanoid";
 import "../styles/header.css";
 
 function Header({ setTodos }) {
@@ -9,12 +8,25 @@ function Header({ setTodos }) {
     setTodo(e.target.value);
   };
 
-  const handleAddTodo = () => {
-    setTodos((prevTodo) => [
-      ...prevTodo,
-      { id: nanoid(), text: todo, isCompleted: false },
-    ]);
-    setTodo("");
+  const handleAddTodo = async () => {
+    try {
+      const res = await fetch("http://localhost:8000/api/todos", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ title: todo }),
+      });
+
+      if (res.ok) {
+        const { data } = await res.json();
+        setTodos((prevTodo) => [...prevTodo, { ...data }]);
+        setTodo("");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
