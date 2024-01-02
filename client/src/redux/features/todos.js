@@ -1,7 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  todos: [],
+  todos: [
+    { id: 1, title: "Buy milk", isCompleted: false },
+    { id: 2, title: "Buy milk", isCompleted: false },
+    { id: 3, title: "Buy milk", isCompleted: false },
+  ],
 };
 
 /**

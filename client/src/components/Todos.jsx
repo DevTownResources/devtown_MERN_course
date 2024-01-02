@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { checkToken } from "../utils";
 
@@ -9,6 +10,8 @@ import Todo from "./Todo";
 function Todos() {
   const [todos, setTodos] = useState([]);
   const navigate = useNavigate();
+  const { todos: reduxtodos } = useSelector((state) => state.todos);
+  console.log(reduxtodos);
 
   useEffect(() => {
     if (checkToken()) {
@@ -69,7 +72,7 @@ function Todos() {
       <Header setTodos={setTodos} />
       <br />
       <br />
-      {todos.map((todo) => (
+      {reduxtodos.map((todo) => (
         <Todo
           key={todo._id}
           todo={todo}

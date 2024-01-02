@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToDo } from "../redux/features/todos.js";
 import "../styles/header.css";
 
-function Header({ setTodos }) {
+function Header() {
   const [todo, setTodo] = useState("");
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setTodo(e.target.value);
@@ -21,7 +24,7 @@ function Header({ setTodos }) {
 
       if (res.ok) {
         const { data } = await res.json();
-        setTodos((prevTodo) => [...prevTodo, { ...data }]);
+        dispatch(addToDo(data));
         setTodo("");
       }
     } catch (error) {
