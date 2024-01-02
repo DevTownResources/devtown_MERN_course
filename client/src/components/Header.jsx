@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addToDo } from "../redux/features/todos.js";
+import { addToDo } from "../redux/features/todosSlice.js";
 import "../styles/header.css";
 
 function Header() {
